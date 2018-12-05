@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TimestampButton from './TimestampButton';
 import List from './List';
+// import Moment from 'react-moment';
+// import 'moment-timezone';
 
 class TimestampList extends Component {
     constructor(props) {
@@ -16,19 +18,31 @@ class TimestampList extends Component {
             <div>
                 <h1>Timestamp</h1>
                 <TimestampButton 
-                    onClick={this._onClick}
+                    onSubmit={this._onSubmit}
+                    term={this.state.term}
                 />
                 <div>
-                    <List />
+                    <h3>Previous Timestamps</h3>
+                    <List 
+                        items={this.state.items}
+                    />
                 </div>
             </div>
         );
     }
 
-    _onClick = event => {
+    _onSubmit = event => {
         event.preventDefault();
+        console.log('submitted');
+        let time = new Date();
+        // console.log(time);
+        let utcDate = time.toUTCString();
+        console.log(utcDate);
+        // console.log(typeof time);
+        console.log(typeof utcDate);
         this.setState({
-            items: [...this.state.items]
+            term: utcDate,
+            items: [...this.state.items, this.state.term]
         })
     }
 

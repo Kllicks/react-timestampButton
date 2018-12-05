@@ -3,10 +3,8 @@ import React from 'react';
 function TimestampButton(props) {
     return (
         <div>
-            {/* <button onClick={props.onClick}>Click Me for Timestamp</button> */}
-            <form>
-                <button type="submit" onClick={props.onClick}></button>
-                <input></input>
+            <form onSubmit={props.onSubmit}>
+                <button type="submit">Click Here</button>
             </form>
         </div>
     );
